@@ -1,0 +1,32 @@
+{
+  "name": "d3-sparql",
+  "version": "0.0.1",
+  "description": "Queres a SPARQL endpoint with a SELECT query and  the data “d3-usable”",
+  "keywords": [
+    "d3",
+    "d3-module"
+  ],
+  "license": "BSD-3-Clause",
+  "main": "build/d3-sparql.js",
+  "jsnext:main": "index",
+  "homepage": "https://github.com/zazuko/d3-sparql",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zazuko}/d3-sparql.git"
+  },
+  "scripts": {
+    "pretest": "rm -rf build && mkdir build && rollup -f umd -n d3 -o build/d3-sparql.js -- index.js",
+    "test": "tape 'test/**/*-test.js'",
+    "prepublish": "npm run test && uglifyjs build/d3-sparql.js -c -m -o build/d3-sparql.min.js",
+    "postpublish": "zip -j build/d3-sparql.zip -- LICENSE README.md build/d3-sparql.js build/d3-sparql.min.js"
+  },
+  "devDependencies": {
+    "rollup": "0.27",
+    "tape": "4",
+    "uglify-js": "2"
+  },
+  "dependencies": {
+    "d3-request": "^1.0.5",
+    "sparql-http-client": "^1.0.2"
+  }
+}
