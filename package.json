@@ -15,7 +15,7 @@
     "url": "https://github.com/zazuko}/d3-sparql.git"
   },
   "scripts": {
-    "pretest": "rm -rf build && mkdir build && rollup -g d3-request:d3,sparql-http-client:d3 -f umd -n d3 -o build/d3-sparql.js -- index.js",
+    "pretest": "rm -rf build && mkdir build && rollup -g d3-request:d3 -f umd -n d3 -o build/d3-sparql.js -- index.js",
     "test": "tape 'test/**/*-test.js'",
     "prepublish": "npm run test && uglifyjs build/d3-sparql.js -c -m -o build/d3-sparql.min.js",
     "postpublish": "zip -j build/d3-sparql.zip -- LICENSE README.md build/d3-sparql.js build/d3-sparql.min.js"

@@ -18,15 +18,16 @@ SELECT ?item ?itemLabel WHERE {
 }
 `
 
-tape("sparql(mikeQuery) returns the developer of D3.js", function(test) {
-  sparql.sparql(mikeQuery).endpointUrl(wikidataUrl).get(function(error, data) {
+tape("sparql(wikidataUrl, mikeQuery) returns the developer of D3.js", function(test) {
+  sparql.sparql(wikidataUrl, mikeQuery, function(error, data) {
+    console.log(error, data)
     test.equal(data[0].developerName, 'Mike Bostock');
   })
   test.end();
 });
 
-tape("sparql(catQuery) returns what the internet was build for, obviously.", function(test) {
-  sparql.sparql(catQuery).endpointUrl(wikidataUrl).get(function(error, data) {
+tape("sparql(wikidataUrl, catQuery) returns what the internet was build for, obviously.", function(test) {
+  sparql.sparql(wikidataUrl, catQuery, function(error, data) {
     test.equal(data.length, 115);
   })
   test.end();
