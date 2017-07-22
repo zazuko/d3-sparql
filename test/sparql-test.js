@@ -1,6 +1,7 @@
 var tape = require("tape"),
     sparql = require("../");
 
+// endpoint vendor: blazegraph
 var wikidataUrl = 'https://query.wikidata.org/bigdata/namespace/wdq/sparql'
 
 var mikeQuery = `#D3.js Author
@@ -20,7 +21,6 @@ SELECT ?item ?itemLabel WHERE {
 
 tape("sparql(wikidataUrl, mikeQuery) returns the developer of D3.js", function(test) {
   sparql.sparql(wikidataUrl, mikeQuery, function(error, data) {
-    console.log(error, data)
     test.equal(data[0].developerName, 'Mike Bostock');
   })
   test.end();

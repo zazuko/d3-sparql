@@ -2,14 +2,15 @@ import {request} from 'd3-request'
 
 export default function (url, query, callback) {
   var url = url + '?query=' + encodeURIComponent(query)
+
   var response  = function (xhr) {
         var body = JSON.parse(xhr.responseText)
         return body.results.bindings.map(function(row) {
-          var rowItem = {}
-          Object.keys(row).forEach(function (key) {
-            rowItem[key] = row[key].value
+          var rowObject = {}
+          Object.keys(row).forEach(function (column) {
+            rowObject[column] = row[column].value
           })
-          return rowItem
+          return rowObject
         })
       }
 
