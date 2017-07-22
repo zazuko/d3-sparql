@@ -34,8 +34,15 @@ export default function (query, callback) {
      endpoint.selectQuery(query).then(function (res) {
         return res.text()
       }).then(function (body) {
-        var result = JSON.parse(body)
-        callback(null, result)
+        var body = JSON.parse(body)
+        var data = body.results.bindings.map(function(row) {
+          var rowItem = {}
+          Object.keys(row).forEach(function (key) {
+            rowItem[key] = row[key].value
+          })
+          return rowItem
+        })
+        callback(null, data)
       }).catch(function (error) {
         callback(error, null)
       })
