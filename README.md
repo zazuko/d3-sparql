@@ -1,6 +1,6 @@
 # d3-sparql
 
-This module allows to access data from [SPARQL](https://www.w3.org/TR/sparql11-query/) [Endpoints](https://www.w3.org/wiki/SparqlEndpoints) in the vain of [d3-csv](https://github.com/d3/d3-dsv) and friends. This modules helps to make the data preparation step faster and more efficient (once you got the hang of [S](https://www.youtube.com/watch?v=FvGndkpa4K0)[P](https://www.youtube.com/watch?v=1jHoUkj_mKw)ARQL). Ultimately it makes it possible to keep your visualizations up-to-date without any further effort.
+This module allows to access data from [SPARQL](https://www.w3.org/TR/sparql11-query/) [Endpoints](https://www.w3.org/wiki/SparqlEndpoints) in the vain of [d3-csv](https://github.com/d3/d3-dsv) and friends. This modules helps to make the data preparation step faster and more efficient (once you got the hang of [SPARQL](https://www.youtube.com/watch?v=1jHoUkj_mKw)). Ultimately it makes it possible to keep your visualizations up-to-date without any further effort.
 
 Define the SPARQL Query and Endpoint:
 ```js
@@ -45,4 +45,4 @@ YOUR API DOCUMENTATION HERE. Use bold for symbols (such as constructor and metho
 
 
 ## Acknowledgement
-The initial development of this library was supported by the [City of Zürich](https://www.stadt-zuerich.ch/).
+The initial development of this library done by [Zazuko](http://www.zazuko.com) was sponsered by the [City of Zürich](https://www.stadt-zuerich.ch/).
