@@ -1,6 +1,6 @@
 # d3-sparql
 
-This module allows to access data from [SPARQL](https://www.w3.org/TR/sparql11-query/) [Endpoints](https://www.w3.org/wiki/SparqlEndpoints) in the vain of [d3-csv](https://github.com/d3/d3-dsv) and friends. This modules helps to make the data preparation step faster and more efficient (once you got the hang of SPARQL). Ultimately it makes it possible to keep your visualizations up-to-date without any further effort.
+This module allows to access data from [SPARQL](https://www.w3.org/TR/sparql11-query/) [Endpoints](https://www.w3.org/wiki/SparqlEndpoints) in the vain of [d3-csv](https://github.com/d3/d3-dsv) and friends. This modules helps to make the data preparation step faster and more efficient (once you got the hang of [S](https://www.youtube.com/watch?v=FvGndkpa4K0)[P](https://www.youtube.com/watch?v=1jHoUkj_mKw)ARQL). Ultimately it makes it possible to keep your visualizations up-to-date without any further effort.
 
 Define the SPARQL Query and Endpoint:
 ```js
@@ -25,7 +25,7 @@ d3.sparql(wikidataUrl, mikeQuery, function(error, data) {
 
 - Based on [d3-require](https://github.com/d3/d3-require) to be in-line with other d3 loagin code (and assure the same compatibility with browsers.)
 - Transformation of [XSD Datatypes](https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes) (e.g. `xsd:dateTime`, `xsd:boolean`, ...) to native JavaScript types.
-- Reformating of the JSON Structure to a d3 style layout while using the provided variables names in the SPARQL Query.
+- Reformating of the JSON Structure to a d3 style layout while using the provided variables names of the SPARQL Query.
 - A backport to a d3 v3 library is provided.
 
 ## Limitations
