@@ -1,3 +1,5 @@
+
+
 const xmlSchema = "http://www.w3.org/2001/XMLSchema#";
 
 d3.sparql = function (url, query, callback) {
@@ -64,5 +66,3 @@ d3.sparql.dataTypeCasting = function (value) {
   }
   return v;
 }
-
-
