@@ -26,7 +26,6 @@
     "uglify-js": "2"
   },
   "dependencies": {
-    "d3-request": "^1.0.5",
-    "sparql-http-client": "^1.0.2"
+    "d3-request": "^1.0.5"
   }
 }

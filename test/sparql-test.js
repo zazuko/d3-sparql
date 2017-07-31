@@ -28,7 +28,7 @@ tape("sparql(wikidataUrl, mikeQuery) returns the developer of D3.js", function(t
 
 tape("sparql(wikidataUrl, catQuery) returns what the internet was build for, obviously.", function(test) {
   sparql.sparql(wikidataUrl, catQuery, function(error, data) {
-    test.equal(data.length, 115);
+    test.equal(data.length, 113);
   })
   test.end();
 });
