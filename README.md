@@ -4,7 +4,7 @@ This module allows to access data from [SPARQL](https://www.w3.org/TR/sparql11-q
 
 Define the SPARQL Query and Endpoint:
 ```js
-#Author of Q3011087 (D3.js)
+// Author of Q3011087 (D3.js)
 var mikeQuery = `SELECT ?developerName WHERE {
   wd:Q3011087 wdt:P178 ?developer.
   ?developer rdfs:label ?developerName.
