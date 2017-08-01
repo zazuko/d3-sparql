@@ -1,6 +1,6 @@
 {
   "name": "d3-sparql",
-  "version": "2.0.0",
+  "version": "0.0.1",
   "description": "Queries a SPARQL endpoint with a SELECT query and provides the data d3 “usable”",
   "keywords": [
     "d3",
