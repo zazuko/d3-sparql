@@ -2,8 +2,8 @@ import {request} from 'd3-request'
 
 const xmlSchema = "http://www.w3.org/2001/XMLSchema#";
 
-export default function (url, query, callback) {
-  var url = url + '?query=' + encodeURIComponent(query)
+export default function (endpoint, query, callback) {
+  var url = endpoint + '?query=' + encodeURIComponent(query)
 
   var response  = function (xhr) {
         try {
