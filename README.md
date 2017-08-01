@@ -25,5 +25,11 @@ d3.sparql(wikidataUrl, mikeQuery, function(error, data) {
 
 Include [d3-sparql.js](https://github.com/zazuko/d3-sparql/blob/v3/d3-sparql.js) after d3 is loaded in your website.
 
+```html
+  <script src="d3.min.js"></script>
+  <script src="d3-sparql.js"></script>
+```
+
+
 ## Acknowledgement
 The initial development of this library done by [Zazuko](http://www.zazuko.com) was sponsered by the [City of Zürich](https://www.stadt-zuerich.ch/).
