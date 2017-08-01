@@ -55,7 +55,7 @@ d3.sparql(endpoint, query)
     .get(callback);
 ```
 
-All other [*request*](https://github.com/d3/d3-request/blob/master/README.md) functions can be used as specified to influence the final request (, except [*request*.response](https://github.com/d3/d3-request/blob/master/README.md#request_response), [*request*. mimeType](https://github.com/d3/d3-request/blob/master/README.md#request_mimeType) should not be changed, unless you know what you do, to assure correct working of the [*sparql*](https://github.com/zazuko/d3-sparql/blob/master/README.md#sparql) request).
+All other [*request*](https://github.com/d3/d3-request/blob/master/README.md) functions can be used as specified to influence the final request (, except [*request*.response](https://github.com/d3/d3-request/blob/master/README.md#request_response) and [*request*.mimeType](https://github.com/d3/d3-request/blob/master/README.md#request_mimeType) should not be changed, unless you know what you do, to assure correct working of the [*sparql*](https://github.com/zazuko/d3-sparql/blob/master/README.md#sparql) request).
 
 ## Acknowledgement
 The initial development of this library by [Zazuko](http://www.zazuko.com) was sponsered by the [City of Zürich](https://www.stadt-zuerich.ch/).
