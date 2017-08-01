@@ -10,7 +10,8 @@ var mikeQuery = `SELECT ?developerName WHERE {
   wd:Q3011087 wdt:P178 ?developer.
   ?developer rdfs:label ?developerName.
   FILTER(LANG(?developerName) = 'en')
-}
+}`
+
 wikidataUrl = 'https://query.wikidata.org/bigdata/namespace/wdq/sparql'
 ```
 
