@@ -1,6 +1,6 @@
 # d3-sparql
 
-This module allows to access data from [SPARQL](https://www.w3.org/TR/sparql11-query/) [Endpoints](https://www.w3.org/wiki/SparqlEndpoints) in the vein of [d3-csv](https://github.com/d3/d3-dsv) and friends. The access through a SPARQL Endpoint allows a faster and more efficient data preparation (, once you got [the hang of SPARQL and the RDF data model](https://www.youtube.com/watch?v=FvGndkpa4K0)). Ultimately it keeps visualizations up to date. Think of SPARQL Endpoints as the most flexible API immaginable.
+This module allows to access data from [SPARQL](https://www.w3.org/TR/sparql11-query/) [Endpoints](https://www.w3.org/wiki/SparqlEndpoints) in the vein of [d3-csv](https://github.com/d3/d3-dsv) and friends. The access through a SPARQL Endpoint allows a faster and more efficient data preparation (, once you got [the hang of SPARQL and the RDF data model](https://www.youtube.com/watch?v=FvGndkpa4K0)). Ultimately it keeps visualizations up to date. Think of SPARQL Endpoints as the most flexible API imaginable.
 
 Define the SPARQL Query and Endpoint:
 
