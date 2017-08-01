@@ -30,7 +30,7 @@ More [examples](https://github.com/zazuko/d3-sparql/tree/master/examples) are pr
 
 - Based on [d3-require](https://github.com/d3/d3-require) to be in-line with other d3 request code (and assure the same compatibility with browsers.)
 - Transformation of [XSD Datatypes](https://www.w3.org/2011/rdf-wg/wiki/XSD_Datatypes) (e.g. `xsd:dateTime`, `xsd:boolean`, ...) to native JavaScript types.
-- Reformating of the JSON Structure to a d3 style layout while using the provided variables names of the SPARQL Query.
+- Reformatting of the JSON Structure to a d3 style layout while using the provided variables names of the SPARQL Query.
 - A backport to a d3 v3 implementation is [provided](https://github.com/zazuko/d3-sparql/tree/v3).
 
 ## Limitations
@@ -59,4 +59,4 @@ d3.sparql(endpoint, query)
 All other [*request*](https://github.com/d3/d3-request/blob/master/README.md) functions can be used as specified to influence the final request (, except [*request*.response](https://github.com/d3/d3-request/blob/master/README.md#request_response) and [*request*.mimeType](https://github.com/d3/d3-request/blob/master/README.md#request_mimeType) should not be changed, unless you know what you do, to assure correct working of the [*sparql*](https://github.com/zazuko/d3-sparql/blob/master/README.md#sparql) request).
 
 ## Acknowledgement
-The initial development of this library by [Zazuko](http://www.zazuko.com) was sponsered by the [City of Zürich](https://www.stadt-zuerich.ch/).
+The initial development of this library by [Zazuko](http://www.zazuko.com) was supported by the [City of Zürich](https://www.stadt-zuerich.ch/).
