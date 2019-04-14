@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+  <script src="https://cdn.jsdelivr.net/npm/d3-sparql@1.0.0/build/d3-sparql.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-collection@1.0.7/dist/d3-collection.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-dispatch@1.0.5/dist/d3-dispatch.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-request@1.0.6/build/d3-request.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+  <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+  <script>
+
+    // we use some statistical data from the City of Zurich, Switzerland
+    var endpoint = 'https://ld.stadt-zuerich.ch/query'
+
+    var timeline = `
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+SELECT ?time ?bew WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+    ?obs a qb:Observation ;
+        qb:dataSet <https://ld.stadt-zuerich.ch/statistics/dataset/BEW-RAUM-ZEIT> ;
+        <https://ld.stadt-zuerich.ch/statistics/property/ZEIT> ?time ;
+        <https://ld.stadt-zuerich.ch/statistics/measure/BEW> ?bew ;
+        <https://ld.stadt-zuerich.ch/statistics/property/RAUM> <https://ld.stadt-zuerich.ch/statistics/code/R30000> .
+    
+    FILTER(?time >= "1900-01-01"^^xsd:date )
+}} ORDER BY ASC(?time)`
+
+    d3.sparql(endpoint, timeline).get(function(error, sparqlData) {
+        
+      var data = sparqlData.map(item => {
+        return {
+          year: item.time.getFullYear(),
+          value: parseFloat(item.bew.toString())
+        }
+      })  
+  
+
+      Highcharts.chart('container', {
+        chart: {
+          type: 'line'
+        },
+        title: {
+          text: 'Wirtschaftliche Bevölkerung Stadt Zürich'
+        },
+        subtitle: {
+          text: 'Source: Statistik Stadt Zürich'
+        },
+        xAxis: {
+          categories: data.map(item => item.year)
+        },
+        yAxis: {
+          title: {
+            text: 'Wirtschaftliche Bevölkerung (Personen)'
+          }
+        },
+        plotOptions: {
+          line: {
+            dataLabels: {
+              enabled: false
+            },
+            enableMouseTracking: true
+          }
+        },
+        series: [{
+          name: 'Personen',
+          data: data.map(item => item.value)
+        }]
+      })()
+    })
+
+  </script>
+  </body>
+
+</html>
