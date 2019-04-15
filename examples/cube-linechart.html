@@ -34,13 +34,7 @@
       }} ORDER BY ASC(?time)`
 
     d3.sparql(endpoint, timeline).get((error, sparqlData) => {
-      const data = sparqlData.map(item => {
-        return {
-          year: item.time.getFullYear(),
-          value: parseFloat(item.bew.toString())
-        }
-      })  
-  
+
       Highcharts.chart('container', {
         chart: {
           type: 'line'
@@ -52,7 +46,7 @@
           text: 'Source: Statistik Stadt Zürich'
         },
         xAxis: {
-          categories: data.map(item => item.year)
+          categories: sparqlData.map(item => item.time.getFullYear())
         },
         yAxis: {
           title: {
@@ -69,7 +63,7 @@
         },
         series: [{
           name: 'Personen',
-          data: data.map(item => item.value)
+          data: sparqlData.map(item => item.bew.valueOf())
         }]
       })
     })
