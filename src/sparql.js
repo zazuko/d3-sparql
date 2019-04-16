@@ -32,9 +32,9 @@ export default function (endpoint, query, callback) {
 
 };
 
-export function dataTypeCasting(value) {
+function dataTypeCasting(value) {
   var v = value.value;
-  if (typeof value.datatype !== "undefined") {
+  if (typeof value.datatype === 'string') {
     var dt = value.datatype.replace(xmlSchema,'')
     switch(dt) {
       case 'string':
