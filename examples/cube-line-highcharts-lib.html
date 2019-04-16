@@ -34,7 +34,6 @@
       }} ORDER BY ASC(?time)`
 
     d3.sparql(endpoint, timeline).get((error, sparqlData) => {
-
       Highcharts.chart('container', {
         chart: {
           type: 'line'

@@ -8,18 +8,19 @@
   <script src="../node_modules/d3-request/build/d3-request.js"></script>
   <script src="../build/d3-sparql.js"></script>
   <script>
-
     var wikidataUrl = 'https://query.wikidata.org/bigdata/namespace/wdq/sparql'
 
-    var catQuery = `#Cats
-    SELECT ?item ?itemLabel WHERE {
-      ?item wdt:P31 wd:Q146.
-      ?item rdfs:label ?itemLabel.
-      FILTER(LANG(?itemLabel) = 'en')
-    }`
+    var catQuery = `
+      #Cats
+      SELECT ?item ?itemLabel WHERE {
+        ?item wdt:P31 wd:Q146.
+        ?item rdfs:label ?itemLabel.
+        FILTER(LANG(?itemLabel) = 'en')
+      }
+    `
 
     d3.sparql(wikidataUrl, catQuery).get(function(error, data) {
-        console.log(data)
+      console.log(data)
     })
 
   </script>

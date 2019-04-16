@@ -6,19 +6,19 @@ export default function (endpoint, query, callback) {
   var url = endpoint + '?query=' + encodeURIComponent(query)
 
   var response  = function (xhr) {
-        try {
-          var body = JSON.parse(xhr.responseText)
-        } catch (e) {
-          throw new Error("unable to parse response, either the Endpoint URL is wrong or the Endpoint does not answer with sparql-results+json: " + xhr.responseText)
-        }
-        return body.results.bindings.map(function(row) {
-          var rowObject = {}
-          Object.keys(row).forEach(function (column) {
-            rowObject[column] = dataTypeCasting(row[column])
-          })
-          return rowObject
-        })
-      }
+    try {
+      var body = JSON.parse(xhr.responseText)
+    } catch (e) {
+      throw new Error("unable to parse response, either the Endpoint URL is wrong or the Endpoint does not answer with sparql-results+json: " + xhr.responseText)
+    }
+    return body.results.bindings.map(function(row) {
+      var rowObject = {}
+      Object.keys(row).forEach(function (column) {
+        rowObject[column] = dataTypeCasting(row[column])
+      })
+      return rowObject
+    })
+  }
 
   var sparql = request(url).mimeType('application/sparql-results+json').response(response)
 

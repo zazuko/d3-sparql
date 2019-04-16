@@ -12,20 +12,22 @@
     var wikidataUrl = 'https://query.wikidata.org/bigdata/namespace/wdq/sparql'
 
     //taken from query.wikidata.org
-    var spaceProbesQuery = `#Timeline of space probes
-    #defaultView:Timeline
-    SELECT ?item ?itemLabel ?launchdate (SAMPLE(?image) AS ?image)
-    WHERE
-    {
-      ?item wdt:P31 wd:Q26529 .
-        ?item wdt:P619 ?launchdate .
-      SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
-        OPTIONAL { ?item wdt:P18 ?image }
-    }
-    GROUP BY ?item ?itemLabel ?launchdate`
+    var spaceProbesQuery = `
+      #Timeline of space probes
+      #defaultView:Timeline
+      SELECT ?item ?itemLabel ?launchdate (SAMPLE(?image) AS ?image)
+      WHERE
+      {
+        ?item wdt:P31 wd:Q26529 .
+          ?item wdt:P619 ?launchdate .
+        SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+          OPTIONAL { ?item wdt:P18 ?image }
+      }
+      GROUP BY ?item ?itemLabel ?launchdate
+    `
 
     d3.sparql(wikidataUrl, spaceProbesQuery).get(function(error, data) {
-        console.log(data)
+      console.log(data)
     })
 
   </script>
