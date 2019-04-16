@@ -15,15 +15,17 @@
     "url": "https://github.com/zazuko/d3-sparql.git"
   },
   "scripts": {
-    "pretest": "rimraf build && mkdirp build && rollup -g d3-request:d3 -f umd -n d3 -o build/d3-sparql.js -- index.js",
+    "build": "rimraf build && mkdirp build && rollup -g d3-request:d3 -f umd -n d3 -o build/d3-sparql.js -- index.js",
+    "lint": "standard",
+    "pretest": "npm run lint && npm run build",
     "test": "tape 'test/**/*-test.js'",
-    "prepublish": "npm run test && uglifyjs build/d3-sparql.js -c -m -o build/d3-sparql.min.js",
-    "postpublish": "zip -j build/d3-sparql.zip -- LICENSE README.md build/d3-sparql.js build/d3-sparql.min.js"
+    "prepublish": "npm run test && uglifyjs build/d3-sparql.js -c -m -o build/d3-sparql.min.js"
   },
   "devDependencies": {
     "mkdirp": "^0.5.1",
     "rimraf": "^2.6.2",
     "rollup": "0.27",
+    "standard": "^12.0.1",
     "tape": "4",
     "uglify-js": "2"
   },
