@@ -19,7 +19,7 @@ export default function (endpoint, query, callback) {
   return sparql
 };
 
-const xmlSchema = 'http://www.w3.org/2001/XMLSchema#'
+var xmlSchema = 'http://www.w3.org/2001/XMLSchema#'
 
 function parseResponse (xhr) {
   try {
