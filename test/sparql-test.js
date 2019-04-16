@@ -10,12 +10,13 @@ var adminUrl = 'http://data.admin.ch/query'
 var ldgeoadminUrl = 'https://ld.geo.admin.ch/query'
 
 //* ******
-var mikeQuery = `#D3.js Author
-SELECT ?developerName WHERE {
-  wd:Q3011087 wdt:P178 ?developer.
-  ?developer rdfs:label ?developerName.
-  FILTER(LANG(?developerName) = 'en')
-}
+var mikeQuery = `
+  #D3.js Author
+  SELECT ?developerName WHERE {
+    wd:Q3011087 wdt:P178 ?developer.
+    ?developer rdfs:label ?developerName.
+    FILTER(LANG(?developerName) = 'en')
+  }
 `
 
 tape('Simple Query returns the developer of D3.js [Blazegraph] [https]', function (test) {
@@ -27,13 +28,15 @@ tape('Simple Query returns the developer of D3.js [Blazegraph] [https]', functio
 })
 
 //* ******
-var swissMuniQuery = `SELECT ?id ?name ?canton WHERE {
-  ?municipality a <https://gont.ch/MunicipalityVersion>.
-  ?municipality <https://gont.ch/id> ?id.
-  ?municipality <https://gont.ch/longName> ?name.
-  ?municipality <https://gont.ch/canton> ?cantonIri.
-  ?cantonIri <https://gont.ch/longName> ?canton.
-} ORDER BY ?id`
+var swissMuniQuery = `
+  SELECT ?id ?name ?canton WHERE {
+    ?municipality a <https://gont.ch/MunicipalityVersion>.
+    ?municipality <https://gont.ch/id> ?id.
+    ?municipality <https://gont.ch/longName> ?name.
+    ?municipality <https://gont.ch/canton> ?cantonIri.
+    ?cantonIri <https://gont.ch/longName> ?canton.
+  } ORDER BY ?id
+`
 
 tape('Larger response [Stardog] [http]', function (test) {
   sparql.sparql(adminUrl, swissMuniQuery, function (error, data) {
@@ -44,12 +47,14 @@ tape('Larger response [Stardog] [http]', function (test) {
 })
 
 //* ******
-var swissCantonsQuery = `SELECT ?Canton ?CantonName
-WHERE {
-  ?Canton <http://www.geonames.org/ontology#featureCode> <http://www.geonames.org/ontology#A.ADM1> .
-  ?Canton a <http://schema.org/AdministrativeArea> .
-  ?Canton <http://schema.org/name> ?CantonName .
-}`
+var swissCantonsQuery = `
+  SELECT ?Canton ?CantonName
+  WHERE {
+    ?Canton <http://www.geonames.org/ontology#featureCode> <http://www.geonames.org/ontology#A.ADM1> .
+    ?Canton a <http://schema.org/AdministrativeArea> .
+    ?Canton <http://schema.org/name> ?CantonName .
+  }
+`
 
 tape('Query with known amount of results [Virtuoso] [https]', function (test) {
   sparql.sparql(ldgeoadminUrl, swissCantonsQuery, function (error, data) {

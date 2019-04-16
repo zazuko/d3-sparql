@@ -1,37 +1,42 @@
 import { request } from 'd3-request'
 
-const xmlSchema = 'http://www.w3.org/2001/XMLSchema#'
-
 export default function (endpoint, query, callback) {
   var url = endpoint + '?query=' + encodeURIComponent(query)
 
-  var response = function (xhr) {
-    try {
-      var body = JSON.parse(xhr.responseText)
-    } catch (e) {
-      throw new Error('unable to parse response, either the Endpoint URL is wrong or the Endpoint does not answer with sparql-results+json: ' + xhr.responseText)
+  var sparql = request(url)
+    .mimeType('application/sparql-results+json')
+    .response(parseResponse)
+
+  if (callback) {
+    if (typeof callback !== 'function') {
+      throw new Error('invalid callback: ' + callback)
     }
-    return body.results.bindings.map(function (row) {
-      var rowObject = {}
-      Object.keys(row).forEach(function (column) {
-        rowObject[column] = dataTypeCasting(row[column])
-      })
-      return rowObject
-    })
-  }
 
-  var sparql = request(url).mimeType('application/sparql-results+json').response(response)
-
-  if (callback != null) {
-    if (typeof callback !== 'function') throw new Error('invalid callback: ' + callback)
-
-    return sparql.get(callback)
+    sparql.get(callback)
+    return
   }
 
   return sparql
 };
 
-function dataTypeCasting (value) {
+const xmlSchema = 'http://www.w3.org/2001/XMLSchema#'
+
+function parseResponse (xhr) {
+  try {
+    var body = JSON.parse(xhr.responseText)
+  } catch (e) {
+    throw new Error('unable to parse response, either the Endpoint URL is wrong or the Endpoint does not answer with sparql-results+json: ' + xhr.responseText)
+  }
+  return body.results.bindings.map(function (row) {
+    var rowObject = {}
+    Object.keys(row).forEach(function (column) {
+      rowObject[column] = dataTypeToJS(row[column])
+    })
+    return rowObject
+  })
+}
+
+function dataTypeToJS (value) {
   var v = value.value
   if (typeof value.datatype === 'string') {
     var dt = value.datatype.replace(xmlSchema, '')
