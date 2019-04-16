@@ -48,7 +48,7 @@ tape("Larger response [Stardog] [http]", function(test) {
 //*******
 var swissCantonsQuery = `SELECT ?Canton ?CantonName
 WHERE {
-  ?Canton a <http://www.geonames.org/ontology#A.ADM1> .
+  ?Canton <http://www.geonames.org/ontology#featureCode> <http://www.geonames.org/ontology#A.ADM1> .
   ?Canton a <http://schema.org/AdministrativeArea> .
   ?Canton <http://schema.org/name> ?CantonName .
 }`
