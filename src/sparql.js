@@ -1,32 +1,32 @@
-import { request } from 'd3-request'
+var fetch
+if (typeof window !== 'undefined') {
+  fetch = window.fetch
+} else {
+  fetch = require('isomorphic-fetch')
+}
 
-export default function (endpoint, query, callback) {
+export default function (endpoint, query, options) {
   var url = endpoint + '?query=' + encodeURIComponent(query)
 
-  var sparql = request(url)
-    .mimeType('application/sparql-results+json')
-    .response(parseResponse)
-
-  if (callback) {
-    if (typeof callback !== 'function') {
-      throw new Error('invalid callback: ' + callback)
+  var defaultOptions = {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/sparql-results+json'
     }
-
-    sparql.get(callback)
-    return
   }
 
-  return sparql
+  Object.assign(defaultOptions, options)
+
+  return fetch(url, defaultOptions)
+    .then(function (response) {
+      return response.json()
+    })
+    .then(parseResponse)
 };
 
 var xmlSchema = 'http://www.w3.org/2001/XMLSchema#'
 
-function parseResponse (xhr) {
-  try {
-    var body = JSON.parse(xhr.responseText)
-  } catch (e) {
-    throw new Error('unable to parse response, either the Endpoint URL is wrong or the Endpoint does not answer with sparql-results+json: ' + xhr.responseText)
-  }
+function parseResponse (body) {
   return body.results.bindings.map(function (row) {
     var rowObject = {}
     Object.keys(row).forEach(function (column) {
