@@ -33,39 +33,40 @@
           FILTER(?time >= "1900-01-01"^^xsd:date )
       }} ORDER BY ASC(?time)`
 
-    d3.sparql(endpoint, timeline).get((error, sparqlData) => {
-      Highcharts.chart('container', {
-        chart: {
-          type: 'line'
-        },
-        title: {
-          text: 'Wirtschaftliche Bevölkerung Stadt Zürich'
-        },
-        subtitle: {
-          text: 'Source: Statistik Stadt Zürich'
-        },
-        xAxis: {
-          categories: sparqlData.map(item => item.time.getFullYear())
-        },
-        yAxis: {
+    d3.sparql(endpoint, timeline)
+      .then((sparqlData) => {
+        Highcharts.chart('container', {
+          chart: {
+            type: 'line'
+          },
           title: {
-            text: 'Wirtschaftliche Bevölkerung (Personen)'
-          }
-        },
-        plotOptions: {
-          line: {
-            dataLabels: {
-              enabled: false
-            },
-            enableMouseTracking: true
-          }
-        },
-        series: [{
-          name: 'Personen',
-          data: sparqlData.map(item => item.bew)
-        }]
+            text: 'Wirtschaftliche Bevölkerung Stadt Zürich'
+          },
+          subtitle: {
+            text: 'Source: Statistik Stadt Zürich'
+          },
+          xAxis: {
+            categories: sparqlData.map(item => item.time.getFullYear())
+          },
+          yAxis: {
+            title: {
+              text: 'Wirtschaftliche Bevölkerung (Personen)'
+            }
+          },
+          plotOptions: {
+            line: {
+              dataLabels: {
+                enabled: false
+              },
+              enableMouseTracking: true
+            }
+          },
+          series: [{
+            name: 'Personen',
+            data: sparqlData.map(item => item.bew)
+          }]
+        })
       })
-    })
   </script>
   </body>
 

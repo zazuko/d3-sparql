@@ -20,9 +20,8 @@ var mikeQuery = `
 `
 
 tape('Simple Query returns the developer of D3.js [Blazegraph] [https]', function (test) {
-  sparql.sparql(wikidataUrl, mikeQuery, function (error, data) {
+  sparql.sparql(wikidataUrl, mikeQuery).then((data) => {
     test.equal(data[0].developerName, 'Mike Bostock')
-    test.error(error)
   })
   test.end()
 })
@@ -39,9 +38,8 @@ var swissMuniQuery = `
 `
 
 tape('Larger response [Stardog] [http]', function (test) {
-  sparql.sparql(adminUrl, swissMuniQuery, function (error, data) {
+  sparql.sparql(adminUrl, swissMuniQuery).then((data) => {
     test.deepEqual(data[0].id, Number(10001))
-    test.error(error)
   })
   test.end()
 })
@@ -57,9 +55,8 @@ var swissCantonsQuery = `
 `
 
 tape('Query with known amount of results [Virtuoso] [https]', function (test) {
-  sparql.sparql(ldgeoadminUrl, swissCantonsQuery, function (error, data) {
+  sparql.sparql(ldgeoadminUrl, swissCantonsQuery).then((data) => {
     test.equal(data.length, 26)
-    test.equal(error, null)
   })
   test.end()
 })
@@ -68,25 +65,22 @@ tape('Query with known amount of results [Virtuoso] [https]', function (test) {
 // Errors
 
 tape('Existing domain, not a SPARQL Endpoint.', function (test) {
-  sparql.sparql('http://example.com', mikeQuery, function (error, data) {
-    test.equal(data, undefined)
-    test.equal(error !== null, true)
+  sparql.sparql('http://example.com', mikeQuery).catch((err) => {
+    test.equal(err !== null, true)
   })
   test.end()
 })
 
 tape('Non-existing domain.', function (test) {
-  sparql.sparql('http://notexisting.example.com', mikeQuery, function (error, data) {
-    test.equal(data, undefined)
-    test.equal(error !== null, true)
+  sparql.sparql('http://notexisting.example.com', mikeQuery).catch((err) => {
+    test.equal(err !== null, true)
   })
   test.end()
 })
 
 tape('Syntax error in SPARQL Query.', function (test) {
-  sparql.sparql(wikidataUrl, 'SELECT * WHERE {s?s ?p ?o.} LIMIT 10').get(function (error, data) {
-    test.equal(data, undefined)
-    test.equal(error !== null, true)
+  sparql.sparql(wikidataUrl, 'SELECT * WHERE {s?s ?p ?o.} LIMIT 10').catch((err) => {
+    test.equal(err !== null, true)
   })
   test.end()
 })

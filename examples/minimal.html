@@ -19,7 +19,7 @@
       }
     `
 
-    d3.sparql(wikidataUrl, catQuery).get(function(error, data) {
+    d3.sparql(wikidataUrl, catQuery).then(function(data) {
       console.log(data)
     })
 
