@@ -65,7 +65,7 @@ function dataTypeToJS (value) {
       case 'date':
       case 'time':
       case 'dateTime':
-        v = Date(v); break
+        v = new Date(v); break
     }
   }
   return v
