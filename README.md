@@ -41,11 +41,7 @@ More [examples](https://github.com/zazuko/d3-sparql/tree/master/examples) are pr
 
 Using NPM: `npm install d3-sparql`. You can also use a CDN, for instance <https://www.jsdelivr.com>.
 
-### d3 Versions
-
-* a d3-v_5_ module providing a promise interface is provided by version `2.x` of `d3-sparql`.
-* a d3-v_4_ module is provided by version `1.x` of `d3-sparql`.
-* a d3-v_3_ modules can be found on the branch [v3](https://github.com/zazuko/d3-sparql/tree/v3) branch.
+See [CHANGELOG](CHANGELOG.md) for details about available versions.
 
 ## API Reference
 
