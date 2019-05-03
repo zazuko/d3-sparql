@@ -1,1 +1,1 @@
-export {default as sparql} from "./src/sparql";
+export { default as sparql } from './src/sparql'
