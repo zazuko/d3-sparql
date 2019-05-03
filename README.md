@@ -1,6 +1,6 @@
 # d3-sparql
 
-This module lets you request data from [SPARQL](https://www.w3.org/TR/sparql11-query/) [endpoints](https://www.w3.org/wiki/SparqlEndpoints) in the vein of [d3-csv](https://github.com/d3/d3-dsv) and friends. It is generating a JSON structure from SPARQL query results, you can use that in any way you like in your code.
+This module lets you request data from [SPARQL](https://www.w3.org/TR/sparql11-query/) [endpoints](https://www.w3.org/wiki/SparqlEndpoints) in the vein of [d3-csv](https://github.com/d3/d3-dsv) and friends. It is generating a JSON structure from SPARQL query results, you can use that in any way you like in your code, with or without D3.
 
 The access through a SPARQL endpoint allows a faster and more efficient data preparation (once you got [the hang of SPARQL and the RDF data model](https://www.youtube.com/watch?v=FvGndkpa4K0)). Ultimately it keeps visualizations up to date. Think of SPARQL endpoints as the most flexible API imaginable.
 
