@@ -45,7 +45,7 @@ See [CHANGELOG](CHANGELOG.md) for details about available versions.
 
 ## API Reference
 
-This package add a [*sparql*](https://github.com/zazuko/d3-sparql/blob/master/README.md#sparql) function to the global `d3` object: `d3.sparql(endpoint, query, options = {})`.
+This package adds a `sparql` function to the global `d3` object: `d3.sparql(endpoint, query, options = {})`.
 
 <a name="request" href="#sparql">#</a> d3.<b> sparql </b>(<i>endpoint</i>, <i>query</i>[, <i>options = {}</i>]) [<>](https://github.com/zazuko/d3-sparql/blob/master/src/sparql.js#L5 "Source")
 
