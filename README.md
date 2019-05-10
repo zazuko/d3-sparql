@@ -47,7 +47,7 @@ See [CHANGELOG](CHANGELOG.md) for details about available versions.
 
 This package adds a `sparql` function to the global `d3` object: `d3.sparql(endpoint, query, options = {})`.
 
-<a name="request" href="#sparql">#</a> d3.<b> sparql </b>(<i>endpoint</i>, <i>query</i>[, <i>options = {}</i>]) [<>](https://github.com/zazuko/d3-sparql/blob/master/src/sparql.js#L5 "Source")
+<a name="request" href="#sparql">#</a> d3.<b> sparql </b>(<i>endpoint</i>, <i>query</i>[, <i>options = {}</i>]) [<>](https://github.com/zazuko/d3-sparql/blob/master/src/sparql.js#L8 "Source")
 
 `options` is an optional object that will get merged with the second argument of [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch).
 
